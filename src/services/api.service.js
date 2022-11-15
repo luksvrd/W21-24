@@ -15,4 +15,21 @@ const BASE_URL = "http://api.github.com";
 
 export default {
   // TODO: Add methods for getting repos by topic, issues, and user repos
+getIssuesRespones(nameOfRepo) {
+  // Nothing to await, just returning the Promise
+  // Whoever calls this will await it.
+  return fetch(`S{BASE_URL}/repos/${nameOfRepo}/issues?direction=asc`)
+  },
+
+  getReposByTopic (topic) {
+    const response = await fetch(`${BASE_URL}/search/repositories?q=${topic}+is:featured&sort=help-wanted-issues`);
+
+  // This promise will need to be awaited by the caller
+  return response.json();
+  },
+
+  async getReposByUsername(username) {
+  // This promise will need to be awaited by the client
+    return response.json();
+  },
 };
