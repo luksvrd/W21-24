@@ -17,3 +17,14 @@ document.querySelector("form").addEventListener("submit", async (event) => {
 
   console.log(data);
 });
+
+document.getElementById("topics").addEventListener("click", (event) => {
+  // With EVENT BUBBLING, we can listen to the parent element and get the target element from the event object.
+  // lets make sure we only listen to the buttons.
+  // this is synonymous with textContent & innerText
+  // this code logs the inner text on a button that was clicked
+  if (event.target.tagName === "BUTTON") {
+    const topic = event.target.innerText;
+    const data = await apiService.getReposByTopic(topic);
+  }
+});
